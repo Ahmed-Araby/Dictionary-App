@@ -1,0 +1,5 @@
+/*storing passward in data base*/
+- encryption functions (reversible - one to one mapping) 
+    vs cryptographic hash function (inreversible many to one mapping).
+
+- https://www.geeksforgeeks.org/store-password-database/

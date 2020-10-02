@@ -1,0 +1,47 @@
+/* create the data base*/
+create database dictionaryApp;
+
+/* *** create tables *** */
+/*user table*/
+create TABLE users(
+    user_id integer not null AUTO_INCREMENT, 
+    user_name varchar(128) not null,
+    first_name varchar(128) not null, 
+    last_name varchar(128), 
+    password varchar(128) not null,
+    
+    PRIMARY KEY (user_id)
+)ENGINE=InnoDB CHARSET = utf8;
+
+
+
+/*word table*/
+create table words(
+    word_id integer not null AUTO_INCREMENT, 
+    word varchar(128) not null, 
+    word_lang varchar(128) not null,
+    
+    PRIMARY key (word_id)
+);
+
+/* pairs 
+this table will store pair of words 
+that the user entered and get as a result 
+from translation and also the id of the user that 
+they belongs to
+
+the server have to make sure to put 
+word1 and word2 in a uniform way 
+which mean compre the words and get the smaller in asci code 
+first then get the keys for each then push into the pairs table
+*/
+
+create table pairs (
+    word1_fk varchar(128) not null, 
+    word2_fk varchar(128) not null,
+    user_fk integer not null, 
+    add_date date,
+    constraint pair_pk primary key (word1_fk, word2_fk, user_fk)
+);
+
+
