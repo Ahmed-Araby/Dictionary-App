@@ -1,6 +1,7 @@
 <?php
     session_start(); 
     require_once "pdo.php";
+    require_once "helpers.php";
 
     function inValidForm($errorMessage)
     {
@@ -21,6 +22,10 @@
     
     //////////////////////////////////////////////////////////////////////
 
+    if(isset($_SESSION['loged']))
+    {
+        header("Location: home.php");
+    }
 
     if(isset($_POST['fName']) && 
         isset($_POST['lName']) && 
@@ -93,7 +98,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
    
-    <link rel='stylesheet' href ='styles.css'>
+    <link rel='stylesheet' href ='css/styles.css'>
 
 </head>
 <body>
@@ -118,22 +123,9 @@
     <form action='signup.php' method='post'>
 
         <div class='container main-form'>
+            
             <?php
-                // display the from validation errors to the user 
-                if(isset($_SESSION['error'])){
-                    echo "
-                        <div class='form-group'>
-                        <h4 style='color:red' >" . $_SESSION['error'] . "</h4> </div> ";
-                    unset($_SESSION['error']); // flash message style
-
-                }
-                else if(isset($_SESSION['success']))
-                {
-                    echo "
-                    <div class='form-group'>
-                    <h4 style='color:green' >" . $_SESSION['success'] . "</h4> </div> ";
-                    unset($_SESSION['success']); // flash message style
-                }
+                displayMessages();
             ?>
 
             <div class="form-group row">
@@ -191,6 +183,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     
-    <script src='app.js'> </script>
+    <script src='js/app.js'> </script>
 
 </html>

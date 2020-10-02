@@ -1,0 +1,35 @@
+.main-form{
+    width: 50%;
+    margin-top:20px;
+}
+
+body{
+    margin-top: 20px;
+    
+}
+
+.home-left
+{
+    background-color: red;
+}
+
+.home-right
+{
+    border: 2px solid black;
+    background-color: blue;
+}
+
+.home-main-row{
+    height: 500px;
+}
+
+footer
+{
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+
+main{
+    margin-top: 100px;
+}
