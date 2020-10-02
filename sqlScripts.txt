@@ -45,3 +45,10 @@ create table pairs (
 );
 
 
+
+/*populating the data base for
+testing */
+
+insert into users (user_name , first_name, last_name, password) 
+values('ahmed', 'ahmed' , 'araby', '1234');
+
