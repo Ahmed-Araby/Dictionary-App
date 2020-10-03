@@ -23,11 +23,15 @@ body{
     height: 500px;
 }
 
+.home-table{
+    margin-top: 50px;
+}
 footer
 {
-    color: white;
+    color: black;
     margin-top: 10px;
     text-align: center;
+    background-color: red;
 }
 
 main{

@@ -1,0 +1,2 @@
+in filltable 
+if the data is not present put very small value for it 

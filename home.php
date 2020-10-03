@@ -15,6 +15,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta http-equiv="pragma" content="no-cache" />
+
         <title>Document</title>
 
         <!-- get Bootstrap css throw cdn -->
@@ -46,8 +54,12 @@
                             <a class="nav-link" href="quiz.php">Quiz</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="view.php">View</a>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='settings.php'> settings </a>
+                        </li>
+
+                        <li>
+                            <a class='nav-link' href='aboutme.php'> About Me </a>
                         </li>
 
                     </ul>
@@ -58,10 +70,99 @@
         </header>
 
         <main>
+            
+            <div class='container'>
+
+                <!-- First row -->
+                <div class='row align-items-center justify-content-around'>
+
+                    <div class='col-12 col-md-2'>
+                        <label> From Language </label>
+                    </div>
+
+                    <div class='col-12 col-md-4'>
+                        <select name='fLang' id='fLang'>
+                            <!-- populate it using PHP -->
+                            <option value="98">dog</option>
+
+                            <?php 
+
+                            ?>
+
+                        </select>
+
+                    </div>
+
+                    <div class='col-12 col-md-2'>
+                        <label> From Language </label>
+                    </div>
+
+                    <div class='col-12 col-md-4'>
+                        <select name='tLang' id='tLang'>
+                            <!-- populate it using PHP -->
+                            <option value="98">dog</option>
+
+                            <?php 
+
+                            ?>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- second row -->
+                <div class='row'>
+                    <div class='col-12 col-md-2'>
+                            <label> Start Date </label>
+                    </div>
+                    
+                    <div class='col-12 col-md-6 offset-md-2'>
+                        <input type="date" id="date" name="date">
+                    </div>
+                </div>
+                
+                <!-- 3rd row -->
+                <div class='row'>
+                    <div class='col-12 col-md-6 offset-md-0'>
+                        <button type="button" class="btn btn-primary" onclick='getData()'>Filter</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- second container --> 
+            <div class = 'container home-table'>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Word</th>
+                        <th scope="col">Translation</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        <td scope="row">1</td>
+                        <td>boy</td>
+                        <td>ولد</td>
+                        <td>15-5-2020</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
         </main>
 
         <footer>
-        </footer>
+         </footer>
         
     </body>
 
