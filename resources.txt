@@ -3,3 +3,34 @@
     vs cryptographic hash function (inreversible many to one mapping).
 
 - https://www.geeksforgeeks.org/store-password-database/
+
+
+https://www.cs.auckland.ac.nz/references/php/2012/index.html
+
+/*mysql related stuff*/
+
+https://www.mysqltutorial.org/mysql-variables/
+
+https://www.mysqltutorial.org/stored-procedures-loop.aspx
+
+https://www.mysqltutorial.org/mysql-stored-function/
+
+https://www.mysqltutorial.org/mysql-temporary-table/
+
+https://www.guru99.com/views.html
+
+https://www.php.net/manual/en/mysqlinfo.concepts.buffering.php
+
+https://stackoverflow.com/questions/17434102/causes-of-mysql-error-2014-cannot-execute-queries-while-other-unbuffered-queries
+
+https://phpdelusions.net/pdo#mysqlnd
+
+https://phpdelusions.net/pdo
+
+https://thisinterestsme.com/close-pdo-connection/
+
+https://www.linkedin.com/learning/php-accessing-databases-with-pdo-and-mysqli/buffered-and-unbuffered-queries
+
+
+# using select element in js 
+https://www.javascripttutorial.net/javascript-dom/javascript-select-box/#:~:text=To%20select%20a%20element,getElementById()%20or%20querySelector()%20.&text=How%20it%20works%3A,when%20the%20button%20is%20clicked.

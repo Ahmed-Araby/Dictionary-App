@@ -52,3 +52,83 @@ testing */
 insert into users (user_name , first_name, last_name, password) 
 values('ahmed', 'ahmed' , 'araby', '1234');
 
+
+
+/* Stored procedures*/
+/* retrive the results for non filtred table */
+DELIMITER $$
+
+create PROCEDURE getRowsFiltered(
+    in in_user_id integer
+    )
+    
+BEGIN
+
+    CREATE TEMPORARY TABLE first_half
+    select word1_fk, word2_fk, add_date, word as word1, word_lang as word1_lang 
+    from pairs 
+    INNER JOIN words 
+    on word1_fk = word_id
+    where user_fk = in_user_id;
+
+
+    select word1, word1_lang, word1_fk, word as word2 , word_lang as word2_lang, word2_fk, add_date 
+    from first_half 
+    inner join words 
+    on word2_fk = word_id
+    order by add_date;
+
+    drop TEMPORARY table first_half;
+
+end
+
+DELIMITER ;
+
+
+/*retrive the result for filtered table*/
+
+DELIMITER $$
+
+create PROCEDURE getRowsFiltered(
+    in in_user_id integer,
+    in lang1 varchar(128) , 
+    in lang2 varchar(128) , 
+    in start_date date, 
+    in end_date date
+    )
+    
+BEGIN
+
+    CREATE TEMPORARY TABLE first_half
+    select word1_fk, word2_fk, add_date, word as word1, word_lang as word1_lang 
+    from pairs 
+    INNER JOIN words 
+    on word1_fk = word_id
+    where user_fk = in_user_id and add_date >= start_date and add_date <= end_date and
+    	  ( word1_lang = lang1 or word1_lang = lang2);
+
+
+    select word1, word1_lang, word1_fk, word as word2 , word_lang as word2_lang, word2_fk, add_date 
+    from first_half 
+    inner join words 
+    on word2_fk = word_id
+    where ( word2_lang = lang1 or word2_lang = lang2)
+    order by add_date;
+
+    drop TEMPORARY table first_half;
+
+end $$
+
+DELIMITER ;
+
+
+
+/*
+some queries for 
+inserting data or testing the procedures 
+*/
+
+call getRowsFiltered(8, 'en', 'ar', '2020-10-04 20:13:50', '2020-10-04 20:13:50', 1);
+call getRows(8, '2020-10-04 20:13:50', 5);
+- example of the date time format , 24 hour format
+2001-12-1 20:14:21

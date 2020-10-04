@@ -1,65 +1,59 @@
 <?php 
-    session_start();
 
-    if(isset($_SESSION['stmt']))
+    session_start();    
+    require_once "pdo.php";
+    $rowNumLimt = 20;
+    function dateTimeCvt($date)
     {
-        
-        $stmt = $_SESSION['stmt'];
-        $cnt = 0;
-        $rows = array();
-        while($cnt < 20 && $row = $stmt->fetch())
-        {
-            $rows[] = $row;
-            $cnt+=1;
-        }
-        
-        $jsonRows = json_encode(array(1, 2, 3));
-        $_SESSION['stmt'] = $stmt; // updated 
-
-        echo $jsonRows;
+        return $date . " " . "23:59:59";
     }
-    else
+ 
+    $fLang = "";
+    $tLang = "";
+    $sDate = "2001-10-10";
+    $eDate = date("Y-m-d");
+
+    // get the filering properties 
+    if(isset($_POST['fLang']) && 
+        isset($_POST['tLang']))
     {
-        $fLang = "";
-        $tLang = "";
-        $date = "";
-        $u
-        // get the filering properties 
-        if(isset($_POST['fLang']) && 
-            isset($_POST['tLang']) && 
-            isset($_POST['date']))
+        $fLang = $_POST['fLang'];
+        $tLang = $_POST['tLang'];
+
+        // validate the data 
+        if($fLang == "" ||  $tLang == "" )
         {
-            $fLang = $_POST['fLang'];
-            $tLang = $_POST['tLang'];
-            $date = $_POST['data'];
-
-            // validate the data 
-            if($fLang == "" || 
-                $tLang == "" || 
-                $date == ""){
-                $query = 
-
-                // do random selection
-            }
-            else{
-                 // do filtered selection 
-            }
+            
+            // do random selection
+            $query = "call getRows(:uid, :lastDateTime, :limt)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(array(":uid" => $_SESSION['uId'], 
+                                "lastDateTime" => dateTimeCvt($_POST['lastDate']), 
+                                ":limt" => $rowNumLimt));
         }
-
-        // retrive 20 row 
-        $rows = array();
-        $cnt = 0;
-        while($cnt <20 && $row = $stmt->fetch())
+        else
         {
-            $rows[] = $row;
-            $cnt +=1;
+
+            // do filtered selection
+            if($_POST['sDate'] != "")
+                $sDate = $_POST['sDate'];
+            if($_POST['eDate'] != "")
+                $eDate = $_POST['eDate'];
+            
+            $query = "call getRowsFiltered(:uId, :l1, :l2, :sDT, :eDT, :limt)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(array(":uId" => $_SESSION['uId'], 
+                                        ":l1" => $fLang, 
+                                        ":l2" => $tLang, 
+                                        ":sDT" => dateTimeCvt($sDate), 
+                                        ":eDT" => dateTimeCvt($eDate),  
+                                        ":limt" => $rowNumLimt));
         }
-
-        // save the result reference 
-        $_SESSION['stmt'] = $stmt;
-
-        echo json_encode($rows);
     }
 
-    //echo json_encode("no response");
+    $rows = array();
+    while($row = $stmt->fetch(PDO::FETCH_GROUP|PDO::FETCH_ASSOC))
+        $rows[] = $row;
+    echo json_encode($rows);
+
 ?>

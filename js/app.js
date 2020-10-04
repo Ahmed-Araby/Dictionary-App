@@ -1,13 +1,14 @@
+var lastDate = "2001-12-1";
+
 function renderRows(ref)
 {
-    var rows = JSON.parse(ref.responseText);
-    console.log(rows);
+    var s= ref.responseText
+   // var rows = JSON.parse(s);
+    console.log(s);
 }
 
 function makeAjaxReq(url, data, callbBackfun)
 {
-    
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
@@ -26,11 +27,14 @@ function getData()
      
     // get the filtering properties
     // this accessing mean get the html element from the jquery object  
-    var fLang = $("#fLang").text();
-    var tLang = $("#tLang").text();
-    var date = $("#date").val();
+    var fLang = document.getElementById('fLang').value;
+    var tLang = document.getElementById('tLang').value;
+    var sDate = document.getElementById('sDate').value;
+    var eDate = document.getElementById('eDate').value;
+
+    var data = `fLang=${fLang}&tLang=${tLang}&sDate=${sDate}&eDate=${eDate}&lastDate=${lastDate}`;
+    console.log("date for post request        " + data);
+    makeAjaxReq("filltable.php", data, renderRows);
     
-    // do post request 
-    makeAjaxReq("filltable.php", "name=ahmed", renderRows);
     return ;
 }

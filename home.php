@@ -83,7 +83,8 @@
                     <div class='col-12 col-md-4'>
                         <select name='fLang' id='fLang'>
                             <!-- populate it using PHP -->
-                            <option value="98">dog</option>
+                            <option></option>
+                            <option>ar</option>
 
                             <?php 
 
@@ -100,7 +101,10 @@
                     <div class='col-12 col-md-4'>
                         <select name='tLang' id='tLang'>
                             <!-- populate it using PHP -->
-                            <option value="98">dog</option>
+                            <option></option>
+                            <option>en</option>
+                            <option>br</option>
+
 
                             <?php 
 
@@ -118,8 +122,16 @@
                             <label> Start Date </label>
                     </div>
                     
-                    <div class='col-12 col-md-6 offset-md-2'>
-                        <input type="date" id="date" name="date">
+                    <div class='col-12 col-md-4'>
+                        <input type="date" id="sDate" name="sDate">
+                    </div>
+
+                    <div class='col-12 col-md-2'>
+                            <label> End Date </label>
+                    </div>
+                    
+                    <div class='col-12 col-md-4'>
+                        <input type="date" id="eDate" name="eDate">
                     </div>
                 </div>
                 
