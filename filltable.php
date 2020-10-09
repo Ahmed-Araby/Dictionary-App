@@ -28,9 +28,10 @@
             $query = "call getRows(:uid, :lastDateTime, :limt)";
             $stmt = $pdo->prepare($query);
             $stmt->execute(array(":uid" => $_SESSION['uId'], 
-                                "lastDateTime" => dateTimeCvt($_POST['lastDate']), 
+                                "lastDateTime" => $_POST['lastDateTime'], 
                                 ":limt" => $rowNumLimt));
         }
+
         else
         {
 
@@ -40,13 +41,14 @@
             if($_POST['eDate'] != "")
                 $eDate = $_POST['eDate'];
             
-            $query = "call getRowsFiltered(:uId, :l1, :l2, :sDT, :eDT, :limt)";
+            $query = "call getRowsFiltered(:uId, :l1, :l2, :sDT, :eDT, :lastDateTime, :limt)";
             $stmt = $pdo->prepare($query);
             $stmt->execute(array(":uId" => $_SESSION['uId'], 
                                         ":l1" => $fLang, 
                                         ":l2" => $tLang, 
                                         ":sDT" => dateTimeCvt($sDate), 
-                                        ":eDT" => dateTimeCvt($eDate),  
+                                        ":eDT" => dateTimeCvt($eDate),
+                                        "lastDateTime" => $_POST['lastDateTime'],   
                                         ":limt" => $rowNumLimt));
         }
     }

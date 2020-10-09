@@ -146,12 +146,14 @@
 
             <!-- second container --> 
             <div class = 'container home-table'>
-                <table class="table table-hover table-dark">
+                <table class="table table-hover table-dark" id='data_table'>
                     <thead>
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Word</th>
+                        <th scope="col">Word Language</th>
                         <th scope="col">Translation</th>
+                        <th scope="col">Translation Language</th>
                         <th scope="col">Date</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
@@ -159,6 +161,7 @@
                     </thead>
 
                     <tbody>
+                    <!--
                         <tr>
                         <td scope="row">1</td>
                         <td>boy</td>
@@ -167,6 +170,8 @@
                         <td>Edit</td>
                         <td>Delete</td>
                         </tr>
+                        -->
+                        
                     </tbody>
                 </table>
             </div>
@@ -184,6 +189,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     
-    <script src='js/app.js'> </script>
+    <script src='js/home.js'> </script>
     
 </html>
