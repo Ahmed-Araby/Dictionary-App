@@ -1,0 +1,24 @@
+{
+    "manifest_version" : 2,
+    "name" : "Dictionary App",
+    "description" : "Extension to record the new words that you learn",
+    "version" : "1",
+    "browser_action" : {
+    "default_title" : "Dictionary-App",
+    "default_icon" : "icon.png",   
+    "default_popup" : "popup.html"
+    },
+    "background":{
+        "scripts":["event_script.js"],
+        "persistent":false
+    }, 
+    "permissions": [
+        "activeTab"
+      ],
+    "content_scripts" : [
+        {
+            "matches" : ["*://translate.google.com.eg/*"],
+            "js" : ["content_script.js"]
+        }
+    ]
+}
