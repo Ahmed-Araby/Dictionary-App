@@ -1,25 +1,10 @@
- 
-3- check if words to be added in add.php is already exist, 
-we need to look first at the unique constrains on the word table 
-and see it's cabibility, and then look the result of execute query 
-and also we need to convert all the words into lowercase 
-
- 
-5- fix the 2 ajax requst at the same time bug 
-
-6- add add.html page
-(for now user can't add words in his own it has to be throw google) 
-may be he can provide a list of words that the site would add them for him 
-using google.
- 
-
+5- fix the 2 ajax requst at the same time bug  
 
 7- do another procedure for only data filteration
 
- 
 9- build edit page 
 
-10- build delete page 
+ 
 
 what should I do when signup is successful
 

@@ -40,7 +40,20 @@ create table pairs (
     word1_fk varchar(128) not null, 
     word2_fk varchar(128) not null,
     user_fk integer not null, 
-    add_date date,
+    add_dateTime datetime,
+    
+    FOREIGN KEY (word1_fk) REFERENCES words (word_id)
+    on DELETE CASCADE
+    on UPDATE CASCADE,
+    
+    FOREIGN KEY (word2_fk) REFERENCES words (word_id)
+    on delete CASCADE
+    on UPDATE CASCADE,
+    
+    FOREIGN KEY (user_fk) REFERENCES users (user_id)
+    on DELETE CASCADE
+    on UPDATE CASCADE,
+    
     constraint pair_pk primary key (word1_fk, word2_fk, user_fk)
 );
 

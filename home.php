@@ -59,7 +59,10 @@
 
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-                <a class="navbar-brand" href="#">Navbar</a>
+                
+                <a class="navbar-brand" href="#">
+                 <img src='chromeExtension/icon.png' width='30px' height='30px'> 
+                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -72,6 +75,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
 
+                        <!--
                         <li class="nav-item">
                             <a class="nav-link" href="quiz.php">Quiz</a>
                         </li>
@@ -83,6 +87,7 @@
                         <li>
                             <a class='nav-link' href='aboutme.php'> About Me </a>
                         </li>
+                        -->
 
                         <li>
                             <a class='nav-link' href='logout.php'> Log Out </a>
@@ -167,7 +172,7 @@
                 <!-- 3rd row -->
                 <div class='row'>
                     <div class='col-12 col-md-6 offset-md-0'>
-                        <button type="button" class="btn btn-primary" onclick='getData()'>Filter</button>
+                        <button type="button" class="btn btn-primary" onclick='getTableData()'>Filter</button>
                     </div>
                 </div>
 
@@ -189,7 +194,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id='data_table_body'>
                     <!--
                         <tr>
                         <td scope="row">1</td>
@@ -218,6 +223,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     
+    <script src='js/ajax.js'> </script>
     <script src='js/home.js'> </script>
     
 </html>

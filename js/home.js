@@ -2,6 +2,8 @@ var lastDateTime = "2001-12-1 00:00:01";
 var originalScroolHeight;
 var onGoingRequest = false;
 
+var table = document.getElementById("data_table");
+
 function renderRows(ref)
 {
     // get the date 
@@ -9,7 +11,6 @@ function renderRows(ref)
     var rows = JSON.parse(s);
 
     // fill the table 
-    var table = document.getElementById("data_table");
     var cnt = table.rows.length;
     
     
@@ -74,22 +75,9 @@ function renderRows(ref)
     return ;
 }
 
-function makeAjaxReq(url, data, callbBackfun)
-{
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function()
-    {
-        if(this.readyState == 4 && this.status == 200)
-            callbBackfun(this);
-    }
 
-    xhttp.open('POST', url, true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(data);
 
-}
-
-function getData()
+function getTableData()
 {   
     /*
     this will be safe 
@@ -116,10 +104,36 @@ function getData()
     
     var data = `fLang=${fLang}&tLang=${tLang}&sDate=${sDate}&eDate=${eDate}&lastDateTime=${lastDateTime}`;
     //console.log("date for post request        " + data);
-    makeAjaxReq("filltable.php", data, renderRows);
+    makeAjaxPostRequest("filltable.php", data, renderRows);
     
     return ;
 }
+
+
+
+function deleteTableRow(event)
+{
+
+    event.preventDefault(); 
+
+    // delte the Row from the data base
+    var url = event.target.href;
+    makeAjaxGetRequest(url, function(ref){
+        console.log(ref.responseText);
+    });
+
+    // delete the row form the UI 
+    var tmpRow = event.target.parentNode.parentNode;
+    var tableBody = document.getElementById('data_table_body');
+    tableBody.removeChild(tmpRow);
+    
+    return;
+}
+
+
+
+
+
 
 
 // listen to scrolling 
@@ -135,7 +149,7 @@ window.addEventListener('scroll', function(){
         var sDate = document.getElementById('sDate').value;
 
         var data = `fLang=${fLang}&tLang=${tLang}&sDate=${sDate}&eDate=${eDate}&lastDateTime=${lastDateTime}`;
-        makeAjaxReq("filltable.php", data, renderRows);
+        makeAjaxPostRequest("filltable.php", data, renderRows);
     }
     return ;
 })
@@ -144,6 +158,9 @@ window.addEventListener('scroll', function(){
 window.addEventListener('load', function(){
     originalScroolHeight = document.scrollingElement.scrollHeight;
 });
+
+// attach listner to the table to delete rows 
+document.getElementById('data_table').addEventListener('click', deleteTableRow);
 
 /*
 I might need to load some data initially on loading the page

@@ -33,19 +33,37 @@
         }
 
         /* add words and get ids of the words*/
-        // insert first word
-        $query = "insert into words (word, word_lang) values(:word, :word_lang)";
+        // check if the first word is not exist
+        $word1Id = -1;
+        $query = "select word_id from words where word = :word1";
         $stmt = $pdo->prepare($query);
-        $stmt->execute(array(":word" => $word1, 
-                            ":word_lang" => $word1_lang));
-        $word1Id = $pdo->lastInsertId();
+        $stmt->execute(array(":word1" => $word1));
+        if($row = $stmt->fetch())
+            $word1Id = $row['word_id'];
+        if($word1Id == -1){   
+            // insert first word
+            $query = "insert into words (word, word_lang) values(:word, :word_lang)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(array(":word" => $word1, 
+                                ":word_lang" => $word1_lang));
+            $word1Id = $pdo->lastInsertId();
+        }
 
-        // insert second word
-        $query = "insert into words (word, word_lang) values(:word, :word_lang)";
+        // check if the second word exist
+        $word2Id = -1;
+        $query = "select word_id from words where word = :word2";
         $stmt = $pdo->prepare($query);
-        $stmt->execute(array(":word" => $word2, 
-                            ":word_lang" => $word2_lang));
-        $word2Id = $pdo->lastInsertId();
+        $stmt->execute(array(":word2" => $word2));
+        if($row = $stmt->fetch())
+            $word2Id = $row['word_id'];
+        if($word2Id == -1){
+            // insert second word
+            $query = "insert into words (word, word_lang) values(:word, :word_lang)";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(array(":word" => $word2, 
+                                ":word_lang" => $word2_lang));
+            $word2Id = $pdo->lastInsertId();
+        }
         
         /* add knowledge pair into pairs table*/
         $query = "insert into pairs (word1_fk, word2_fk, user_fk, add_dateTime) values(:w1Fk, :w2Fk, :userFk, :addDT)";
