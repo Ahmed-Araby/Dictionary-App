@@ -1,0 +1,92 @@
+-- to do -- 
+2- make sure that yout pdo queries are buffered
+
+4- enhance the design as total
+
+5- look for a way to unload the session at once for logout
+session_unset();
+
+-- bugs to fix -- 
+1- in filltable.js 2 ajax request could initiaited and get repeated data 
+	I should prevent creating a new request until the response of the previous 
+	one come back 
+
+-- questions -- 
+1- what does die() actually do ???
+2- header for redirection in php ?
+3- error  mode exception attribute in pdo !?
+4- why does the browser keep the cookies even after loging out 
+and deleting the sesion.
+
+-- things New I have learned -- 
+- any empty spaces in the file that don't lie 
+	in the php code section will get sent with the response of the server
+- height of the screen before and after scrolling , detecing the scroll to reach the end of the page
+
+- input elements if not have a specified value, it will assign the inner text for the value property.
+
+
+# files jops 
+1- add.php 
+recieve data from the extension and add it to the data base 
+-- things I learned new --
+- date('Y-m-d H:i:s')
+- pdo->lastInsertId();
+
+2- filltable.php 
+-- to do -- 
+put additional functions in the helpers.php file 
+
+-- things I learned new -- 
+- $stmt->fetch(PDO::FETCH_GROUP|PDO::FETCH_ASSOC))
+
+3- login.php 
+-- to do -- 
+put additional functions in helpers.php file
+
+-- things I learned new -- 
+- md5 hashing and salt 
+
+4- helpers.php 
+have some functions that are used by many files 
+in the server 
+
+
+5- externalLogin.php 
+provide login check for chrome extension 
+it just check if the username and pass are correst
+
+
+6- home.php 
+provide a table with knowledge paris 
+that beling to the user 
+
+7- index.php 
+for loging and signup 
+
+8- quiz.php 
+not implemented yet, it's supposed to provide quiz for users 
+
+9- settings.php 
+not implemented yet, it's supposed to edit the data of the user 
+like user name, first_name, last_name, pass 
+
+10- signup.php
+create a new email for the user, it have to make sure that user name 
+is not exist before 
+
+11- testing.php 
+for testing some php syntax 
+
+
+
+
+
+
+
+
+
+
+
+------------------------- chrome extension ------------------------
+leave it for now

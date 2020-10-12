@@ -10,7 +10,7 @@
         global $uName;
 
         $_SESSION['error'] = $errorMessage;
-        $_SESSION['uName'] = $uName;
+        $_SESSION['uName'] = $uName; /* put it into the form again*/
         header("Location: index.php");
         die();
     }

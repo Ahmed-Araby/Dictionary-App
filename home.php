@@ -7,6 +7,28 @@
     {
         header("Location: index.php");
     }
+
+    /*
+    sql for filling the select input
+    there are some alternatives 
+    like 1- put languages in a file and load them, 
+         2- make new table for languages correspondig to a specific usre 
+         but the approach I used bellow is the most dynamic one 
+         however it could become computionaly expensive
+    */
+
+    $query = "select word_lang 
+    from words 
+    inner join pairs 
+    on word_id = word1_fk or word_id = word2_fk 
+    where user_fk =" . $_SESSION['uId'] . "\n group by word_lang ";
+    $stmt = $pdo->query($query);
+    $languages = array();
+    while($row = $stmt->fetch(PDO::FETCH_GROUP|PDO::FETCH_ASSOC))
+    {
+        $languages [] = $row;
+    }
+    
 ?>
 
 
@@ -62,6 +84,9 @@
                             <a class='nav-link' href='aboutme.php'> About Me </a>
                         </li>
 
+                        <li>
+                            <a class='nav-link' href='logout.php'> Log Out </a>
+                        </li>
                     </ul>
                 
                 </div>
@@ -82,12 +107,15 @@
 
                     <div class='col-12 col-md-4'>
                         <select name='fLang' id='fLang'>
-                            <!-- populate it using PHP -->
                             <option></option>
-                            <option>ar</option>
-
+                            <!-- populate it using PHP -->
                             <?php 
-
+                                for($index = 0; $index<sizeof($languages); $index+=1)
+                                {
+                                    echo "<option>";
+                                    echo $languages[$index]['word_lang'];
+                                    echo "</option>";
+                                }
                             ?>
 
                         </select>
@@ -102,12 +130,13 @@
                         <select name='tLang' id='tLang'>
                             <!-- populate it using PHP -->
                             <option></option>
-                            <option>en</option>
-                            <option>br</option>
-
-
                             <?php 
-
+                                for($index = 0; $index<sizeof($languages); $index+=1)
+                                {
+                                    echo "<option>";
+                                    echo $languages[$index]['word_lang'];
+                                    echo "</option>";
+                                }
                             ?>
 
                         </select>

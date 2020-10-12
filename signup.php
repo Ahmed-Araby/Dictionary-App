@@ -76,6 +76,12 @@
         }
     }
 
+    
+    /*
+    get request for the first time 
+    and to avoid having theses values not declared
+    on using them at the form
+    */
     if( !isset($_SESSION['error']))
     {
         $_SESSION['fName'] = "";

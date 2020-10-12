@@ -19,6 +19,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1 style='color:red'> quiz page , to be implemented </h1>
 </body>
 </html>

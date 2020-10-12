@@ -1,13 +1,12 @@
 var lastDateTime = "2001-12-1 00:00:01";
 var originalScroolHeight;
+var onGoingRequest = false;
 
 function renderRows(ref)
 {
     // get the date 
     var s= ref.responseText
     var rows = JSON.parse(s);
-
-    //console.log(rows);
 
     // fill the table 
     var table = document.getElementById("data_table");
@@ -71,6 +70,7 @@ function renderRows(ref)
         // update date time
         lastDateTime = rows[i]['add_dateTime'];
     }
+    onGoingRequest = false;
     return ;
 }
 
@@ -90,7 +90,19 @@ function makeAjaxReq(url, data, callbBackfun)
 }
 
 function getData()
-{    
+{   
+    /*
+    this will be safe 
+    as js is single thrided
+
+    this don't seem to be a solution
+    */ 
+    //console.log(onGoingRequest);
+    if(onGoingRequest == true)
+        return ;
+    onGoingRequest = true;
+    //console.log("passed");
+
     // reset
     lastDateTime = "2001-12-1 00:00:01";
     var table = document.getElementById("data_table");

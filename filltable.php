@@ -2,10 +2,17 @@
 
     session_start();    
     require_once "pdo.php";
+
     $rowNumLimt = 20;
     function dateTimeCvt($date)
     {
         return $date . " " . "23:59:59";
+    }
+
+    if(!isset($_SESSION['loged']))
+    {
+        header("Location: index.php");
+        die();
     }
  
     $fLang = "";
@@ -51,11 +58,10 @@
                                         "lastDateTime" => $_POST['lastDateTime'],   
                                         ":limt" => $rowNumLimt));
         }
+        
+        $rows = array();
+        while($row = $stmt->fetch(PDO::FETCH_GROUP|PDO::FETCH_ASSOC))
+            $rows[] = $row;
+        echo json_encode($rows);
     }
-
-    $rows = array();
-    while($row = $stmt->fetch(PDO::FETCH_GROUP|PDO::FETCH_ASSOC))
-        $rows[] = $row;
-    echo json_encode($rows);
-
 ?>

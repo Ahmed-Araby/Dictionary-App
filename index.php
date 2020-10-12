@@ -10,7 +10,10 @@
         die();
     }
 
-    // simple get request, not redirection
+    /*
+    simple get request, not redirection
+    other wise keep the uName to put it into the form
+    */
     if(!isset($_SESSION['error']))
     {
         // get request 
