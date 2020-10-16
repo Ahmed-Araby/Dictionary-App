@@ -1,1 +1,3 @@
 - sentence with more than 1 word do a strange behaviour.
+- listinign for clicking on the table as a whole for deleting, must be only when the click was on a delete buuton , could be detected form the target property
+of the event object
