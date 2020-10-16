@@ -4,7 +4,7 @@
 
 9- build edit page 
 
- 
+10- change the shortcut key 
 
 what should I do when signup is successful
 
