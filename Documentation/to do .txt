@@ -6,6 +6,8 @@
 
 10- change the shortcut key 
 
+11- force the page to be in english]
+
 what should I do when signup is successful
 
 how to prevent some external domain from 
