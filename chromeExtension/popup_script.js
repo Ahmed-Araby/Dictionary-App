@@ -1,13 +1,14 @@
-
 const URL = 'http://localhost/Dictionary-App/externalLogin.php';
-const extensionID = "cnnhmfnakfdlfgdinjcbphmeojoioegp";
 
 function messageResponseCallback(responseObject) {
+    /*
+    this call back will be called form 
+    event_script.js file
+    */
+   
     // for debug purpose in the console
-    console.log("Message '" +
-    responseObject.message + "' from Sender '" +
-    responseObject.sender + "'");
-
+    console.log("Message :" + responseObject.message +
+      ", " + responseObject.sender);
 
     // reflect succcess on the popup html
     var form = document.forms[0];
@@ -27,9 +28,9 @@ function ajaxResponseCallback(ref)
        // send data to event js script 
        var uName = document.getElementById('uName').value;
        var pass = document.getElementById('pass').value;
-       var message = uName + " " + pass;
+       var message = uName + "*" + pass;
 
-       chrome.runtime.sendMessage(extensionID,message,messageResponseCallback);
+       chrome.runtime.sendMessage(message,messageResponseCallback);
    }
 
    else{

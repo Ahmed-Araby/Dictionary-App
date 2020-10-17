@@ -1,0 +1,19 @@
+messaging APIs  and events 
+
+message API is used to send message 
+Event is used to listen to the comming message 
+
+both are represented as functions
+
+message API:
+standard js 
+chrome extension frame work 
+
+# chrome extension API:
+	- chrome.runtime.sendMessage
+	event to listen to , chrome.runtime.onMessage, 
+	omMessageExternal , it have sender url as input parameter 
+	which could be used for filteration.
+	is used to handle incomming messages from webpage 
+	- chrome.runtime.connect
+	event to listen to , chrom.runtime.onConnect

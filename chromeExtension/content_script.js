@@ -1,21 +1,26 @@
 alert("hellow from content_script.js file");
 
 
-var exId = "cnnhmfnakfdlfgdinjcbphmeojoioegp";
-var message = "hey dude";
-var port = chrome.runtime.connect(exId,{"name" : "content_to_event"});
+/*
+prepare for communication with event_script.js file 
+I don't do the ajax post request from here as I need to make sure 
+that Iam signed in first which happen using the communication between event_script.js and popup.js
+don't use extensionId as the communication is happening wihtin the same extension
+ */
+var port = chrome.runtime.connect({"name" : "content_to_event"});
 port.onMessage.addListener(function(message) {
     console.log(message);
 });
 
 
-function dispData()
+function sendKnowledgePair()
 {
     /*
     get reference to the html elements here 
     as some of them will get injected and removed by the js 
     of the google page for different events.
     */
+
     var wordElem = document.getElementById('source');
     var translationElem = document.getElementsByClassName("tlid-translation translation")[0];
     var languages = document.getElementsByClassName('jfk-button-checked');
@@ -38,7 +43,7 @@ function dispData()
 
     // send data to event script
     // to put them into the server
-    var message = word + " " + wordLang + " " + translation + " " + translationLang;
+    var message = word + "*" + wordLang + "*" + translation + "*" + translationLang;
     port.postMessage(message);
     return;
 }
@@ -46,6 +51,6 @@ function dispData()
 
 document.addEventListener('keydown', function(event){
     if(event.key == "Control")
-        dispData();
+        sendKnowledgePair();
 })
 

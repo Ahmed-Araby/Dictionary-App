@@ -43,6 +43,9 @@
                  $errorMessage = 'all fields are required';
                  inValidForm($errorMessage);
              }
+        /* prevent the user name from having special character specially "*" 
+        as I will use this char as delimiter in the communicatin between popup_scipt.js and event_script.js 
+        in login operation. */
 
         // check if the user name is not taken
         $query = "select user_id from users where user_name = :uName";
