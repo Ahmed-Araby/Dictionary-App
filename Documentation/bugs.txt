@@ -1,1 +1,0 @@
-- sentence with more than 1 word do a strange behaviour.

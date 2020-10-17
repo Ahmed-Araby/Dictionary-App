@@ -1,17 +1,5 @@
--- to do -- 
-2- make sure that yout pdo queries are buffered
-
-4- enhance the design as total
-
-5- look for a way to unload the session at once for logout
-session_unset();
-
--- bugs to fix -- 
-1- in filltable.js 2 ajax request could initiaited and get repeated data 
-	I should prevent creating a new request until the response of the previous 
-	one come back 
-
 -- questions -- 
+
 1- what does die() actually do ???
 2- header for redirection in php ?
 3- error  mode exception attribute in pdo !?
@@ -19,12 +7,14 @@ session_unset();
 and deleting the sesion.
 
 -- things New I have learned -- 
+
 - any empty spaces in the file that don't lie 
 	in the php code section will get sent with the response of the server
 - height of the screen before and after scrolling , detecing the scroll to reach the end of the page
 
 - input elements if not have a specified value, it will assign the inner text for the value property.
 
+- new line is important in query string when it's needed
 
 # files jops 
 1- add.php 

@@ -44,12 +44,12 @@ function renderRows(ref)
         
         // put edit and delete buttons 
         var editLink = document.createElement('a');
-        editLink.setAttribute('class' ,"btn btn-warning");
+        editLink.setAttribute('class' ,"edit btn btn-warning");
         editLink.setAttribute('href', `edit.php?word1_fk=${word1_fk}&word2_fk=${word2_fk}`);
         editLink.innerHTML = 'Edit';
 
         var deleteLink = document.createElement('a');
-        deleteLink.setAttribute('class' ,"btn btn-danger");
+        deleteLink.setAttribute('class' ,"delete btn btn-danger");
         deleteLink.setAttribute('href', `delete.php?word1_fk=${word1_fk}&word2_fk=${word2_fk}`);
         deleteLink.innerHTML = 'Delete';
 
@@ -110,10 +110,15 @@ function getTableData()
 }
 
 
+function handleDataTableEvents(event)
+{
+    if(event.target.classList[0] =='delete')
+        deleteTableRow(event);
+    return ;
+}
 
 function deleteTableRow(event)
 {
-
     event.preventDefault(); 
 
     // delte the Row from the data base
@@ -133,6 +138,7 @@ function deleteTableRow(event)
 
 
 
+//// attach listners ////
 
 
 
@@ -160,7 +166,7 @@ window.addEventListener('load', function(){
 });
 
 // attach listner to the table to delete rows 
-document.getElementById('data_table').addEventListener('click', deleteTableRow);
+document.getElementById('data_table').addEventListener('click', handleDataTableEvents);
 
 /*
 I might need to load some data initially on loading the page
