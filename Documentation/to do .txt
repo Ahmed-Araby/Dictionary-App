@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1- fix the 2 ajax requst at the same time bug  
 2- do another procedure for only data filteration, no history
 3- build edit.php page 
@@ -13,3 +14,23 @@ requesting some of my files, like helpers.php
 for(helpers.php)
 11- get jquery, bootstrap files on the server locally
 12- load them locally or using CDN respect to the internet state connectd or offline
+=======
+5- fix the 2 ajax requst at the same time bug  
+
+7- do another procedure for only data filteration
+
+9- build edit page 
+
+10- change the shortcut key 
+
+11- force the page to be in english]
+
+what should I do when signup is successful
+
+how to prevent some external domain from 
+accessing some files like helpers.php 
+for(helpers.php)
+
+
+new line is important in query string when it's needed
+>>>>>>> f3ddb6589f77653d4a0450c51adcd647ae71fde9
