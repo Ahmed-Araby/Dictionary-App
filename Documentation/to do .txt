@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+1- fix the 2 ajax requst at the same time bug  
+2- do another procedure for only data filteration, no history
+3- build edit.php page 
+4- make sure that usename don't have special characetrs in it.
+5- use XHR API to be able to communicate with the raspberry PI server 
+from the extension on different origin.
+6- setup the raspberry PI for hosting the server 
+7- search for better method to signin the user, in the chrome extension. 
+8- get a domain name
+9- study CORS
+10- look at how to prevent external machines from 
+requesting some of my files, like helpers.php 
+for(helpers.php)
+11- get jquery, bootstrap files on the server locally
+12- load them locally or using CDN respect to the internet state connectd or offline
+=======
 5- fix the 2 ajax requst at the same time bug  
 
 7- do another procedure for only data filteration
@@ -16,3 +33,4 @@ for(helpers.php)
 
 
 new line is important in query string when it's needed
+>>>>>>> f3ddb6589f77653d4a0450c51adcd647ae71fde9
